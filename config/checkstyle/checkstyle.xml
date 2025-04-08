@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <property name="charset" value="UTF-8"/>
+    <property name="localeCountry" value="en"/>
+    <property name="localeLanguage" value="GB"/>
+    <module name="SeverityMatchFilter">
+        <property name="severity" value="info"/>
+        <property name="acceptOnMatch" value="false"/>
+    </module>
+
+    <module name="FileLength">
+        <property name="max" value="2000"/>
+    </module>
+
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
+
+    <module name="SuppressWarningsFilter"/>
+
+    <module name="LineLength">
+        <property name="max" value="200"/>
+        <property name="ignorePattern" value="^[ \t]*\*.*@.*$"/>
+    </module>
+
+    <module name="TreeWalker">
+        <property name="tabWidth" value="4"/>
+        <property name="severity" value="error"/>
+
+        <module name="ConstantName"/>
+
+        <module name="LocalFinalVariableName"/>
+
+        <module name="SuppressWarningsHolder"/>
+
+        <module name="LocalVariableName"/>
+
+        <module name="MemberName">
+            <property name="format" value="^[a-z][a-zA-Z0-9_]*$"/>
+        </module>
+
+        <module name="MethodName"/>
+
+        <module name="PackageName"/>
+
+        <module name="ParameterName"/>
+
+        <module name="StaticVariableName"/>
+
+        <module name="TypeName"/>
+
+        <module name="RedundantImport"/>
+
+        <module name="UnusedImports"/>
+
+        <module name="EmptyForInitializerPad"/>
+
+        <module name="MethodParamPad"/>
+
+        <module name="NoWhitespaceAfter">
+            <property name="tokens" value="BNOT, DEC, INC, LNOT, UNARY_MINUS, UNARY_PLUS"/>
+        </module>
+
+        <module name="NoWhitespaceBefore"/>
+
+        <module name="WhitespaceAfter">
+            <property name="tokens" value="COMMA, SEMI"/>
+        </module>
+
+        <module name="WhitespaceAround">
+            <property name="tokens" value="ASSIGN, EQUAL, LT, GT, LE, GE"/>
+            <property name="allowEmptyConstructors" value="true"/>
+            <property name="allowEmptyMethods" value="true"/>
+        </module>
+
+        <module name="OperatorWrap">
+            <property name="tokens" value="BAND, BOR, BSR, BXOR, DIV, EQUAL, GE, GT, LAND, LE, LITERAL_INSTANCEOF, LOR, LT, MINUS, MOD, NOT_EQUAL, PLUS, SL, SR, STAR"/>
+            <property name="option" value="eol"/>
+        </module>
+
+        <module name="ParenPad"/>
+
+        <module name="TypecastParenPad"/>
+
+        <module name="ModifierOrder"/>
+
+        <module name="RedundantModifier">
+            <property name="tokens" value="METHOD_DEF, VARIABLE_DEF, INTERFACE_DEF, CLASS_DEF, ENUM_DEF"/>
+        </module>
+
+        <module name="AvoidNestedBlocks">
+            <property name="allowInSwitchCase" value="true"/>
+        </module>
+
+        <module name="AvoidStarImport"/>
+
+        <module name="NestedTryDepth">
+            <property name="max" value="2"/>
+        </module>
+
+        <module name="EmptyBlock">
+            <property name="option" value="text"/>
+            <property name="tokens" value="LITERAL_CATCH, LITERAL_WHILE"/>
+        </module>
+
+        <module name="CovariantEquals"/>
+
+        <module name="LeftCurly"/>
+        <module name="RightCurly">
+            <property name="tokens" value="LITERAL_TRY, LITERAL_CATCH, LITERAL_FINALLY"/>
+        </module>
+
+        <module name="NeedBraces"/>
+
+        <module name="EmptyStatement"/>
+
+        <module name="EqualsHashCode"/>
+
+        <module name="ThrowsCount">
+            <property name="max" value="5"/>
+        </module>
+
+        <module name="SimplifyBooleanExpression"/>
+
+        <module name="SimplifyBooleanReturn"/>
+
+        <module name="StringLiteralEquality"/>
+
+        <module name="PackageDeclaration"/>
+
+        <module name="ParameterAssignment"/>
+
+        <module name="FallThrough"/>
+
+        <module name="FinalClass"/>
+        <module name="FinalParameters"/>
+        <module name="FinalLocalVariable">
+            <property name="tokens" value="VARIABLE_DEF,PARAMETER_DEF"/>
+            <property name="validateEnhancedForLoopVariable" value="true" />
+        </module>
+
+        <module name="MutableException"/>
+
+        <module name="ArrayTypeStyle"/>
+
+        <module name="UpperEll"/>
+
+        <module name="SuppressWithNearbyCommentFilter">
+            <property name="influenceFormat" value="1"/>
+        </module>
+    </module>
+</module>

@@ -1,0 +1,27 @@
+name: Compatibility Test
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Compatibility Test
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 21
+          distribution: 'zulu'
+      - name: Compatibility Test
+        run: ./gradlew compatibilityTest --rerun-tasks
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: build/reports

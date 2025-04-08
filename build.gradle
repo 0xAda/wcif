@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'checkstyle'
+}
+
+group = 'rip.ada'
+version = '0.1'
+
+java {
+    sourceCompatibility = 21
+    targetCompatibility = 21
+}
+
+sourceSets {
+    examples {
+        java {
+            srcDirs = ['src/examples/java']
+        }
+        resources {
+            srcDirs = ['src/examples/resources']
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+    compatibilityTest {
+        java {
+            srcDirs = ['src/compatibilityTest/java']
+        }
+        resources {
+            srcDirs = ['src/compatibilityTest/resources']
+        }
+        compileClasspath += sourceSets.main.output + configurations.testRuntimeClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.0'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.18.0'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.0'
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.10.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+
+configurations {
+    compatibilityTestImplementation.extendsFrom testImplementation
+    compatibilityTestRuntimeOnly.extendsFrom testRuntimeOnly
+}
+
+task compatibilityTest(type: Test) {
+    description = 'Runs compatibility tests.'
+    group = 'verification'
+    testClassesDirs = sourceSets.compatibilityTest.output.classesDirs
+    classpath = sourceSets.main.runtimeClasspath + sourceSets.compatibilityTest.runtimeClasspath
+    shouldRunAfter test
+    outputs.cacheIf { false }
+    useJUnitPlatform()
+}
+
+checkstyle {
+    toolVersion = "10.12.4"
+}
