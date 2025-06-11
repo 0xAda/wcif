@@ -10,7 +10,7 @@ public class WCIFSpecificationTest {
 
     @Test
     public void shouldNotHaveChangedWCIFSpec() throws IOException, NoSuchAlgorithmException, InterruptedException {
-        assertUnchanged("specification.md", "83b7fafe1316fa5107a351cac44116903419adb7d716d61d7755c0f96ddf4a67");
+        assertUnchanged("specification.md", "a46e19893873a31b13caa67d1077ce6889f97062d463960ac779f12675da62e1");
     }
 
     private static void assertUnchanged(final String file, final String hash) throws IOException, NoSuchAlgorithmException, InterruptedException {
